@@ -86,7 +86,7 @@ const Employees = () => {
         // console.log(process.env);
         setIsLoading(true);
         const result = await sendRequest(
-          `http://localhost:8080/api/user/${userId}`,
+          `${process.env.REACT_APP_BACKEND_URL}/user/${userId}`,
           "GET",
           { Authorization: "Bearer " + token }
         );
@@ -150,7 +150,7 @@ const Employees = () => {
       formData.append("image", product.image);
       try {
         responseData = await sendRequest(
-          `http://localhost:8080/api/${product.id}`,
+          `${process.env.REACT_APP_BACKEND_URL}/${product.id}`,
           "PATCH",
           { Authorization: "Bearer " + auth.token },
           formData

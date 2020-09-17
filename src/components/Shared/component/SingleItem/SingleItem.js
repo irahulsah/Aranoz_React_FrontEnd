@@ -58,7 +58,7 @@ const SingleProductItem = ({ product }) => {
       )}
       {isLoading && <LoadingSpinner />}
       {!isLoading && product && (
-        <div className="single_product_item">
+        <div className="single_product_item" style={{ padding: "0px 10px" }}>
           <img
             src={`${process.env.REACT_APP_ASSET_URL}/${product.image}`}
             alt={product.image}
