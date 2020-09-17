@@ -24,7 +24,7 @@ const Checkout = React.lazy(() => import("./pages/checkout"));
 const Cart = React.lazy(() => import("./pages/cart"));
 const OrderConfirmation = React.lazy(() => import("./pages/orderConfirmation"));
 const Contact = React.lazy(() => import("./pages/contact"));
-const SignUpFormComponent = React.lazy(() => import("./pages/SignUp"));
+const SignUpForm = React.lazy(() => import("./pages/SignUp"));
 const Dashboard = React.lazy(() => import("./pages/dashboard"));
 
 const App = () => {
@@ -33,12 +33,6 @@ const App = () => {
   if (token) {
     routes = (
       <Switch>
-        <Route path="/" component={Home} exact />
-
-        <Route path="/product/:productId" component={SingleProduct} exact />
-
-        <Route path="/login" component={LoginForm} exact />
-
         <Route path="/order" component={TrackingOrder} exact />
 
         <Route path="/checkout" component={Checkout} exact />
@@ -50,12 +44,6 @@ const App = () => {
           component={OrderConfirmation}
           exact
         />
-
-        <Route path="/contact" component={Contact} exact />
-
-        <Route path="/category" component={ProductCategory} exact />
-
-        <Route path="/signup" component={SignUpFormComponent} exact />
 
         <Route path="/dashboard" component={Dashboard} exact />
 
@@ -70,12 +58,11 @@ const App = () => {
         <Route path="/product/:productId" component={SingleProduct} exact />
 
         <Route path="/login" component={LoginForm} exact />
+        <Route path="/signup" component={SignUpForm} exact />
 
         <Route path="/contact" component={Contact} exact />
 
         <Route path="/category" component={ProductCategory} exact />
-
-        <Route path="/signup" component={SignUpFormComponent} exact />
 
         <Redirect to="/" />
       </Switch>

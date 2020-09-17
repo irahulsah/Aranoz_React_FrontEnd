@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { useForm } from "../../../Shared/hooks/form-hooks";
 import { useHttpClient } from "../../../Shared/hooks/http-hook";
 import { Link, useHistory } from "react-router-dom";
-import Input from "../../../Shared/FormElements/ImagePicker";
+import Input from "../../../Shared/FormElements/Input";
 import {
   VALIDATOR_MINLENGTH,
   VALIDATOR_EMAIL,
