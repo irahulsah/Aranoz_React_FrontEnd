@@ -21,6 +21,8 @@ const SignUpFormComponent = () => {
     },
     false
   );
+
+  // const [notify,setNotify] = useState({isOpen: false,type:'',message: ''})
   const history = useHistory();
   const auth = useContext(AuthContext);
   const [errorModal, setErrorModel] = useState({
@@ -43,7 +45,7 @@ const SignUpFormComponent = () => {
           confirmPassword: formState.inputs.confirmPassword.value,
         })
       );
-      console.log(responseData);
+      // console.log(responseData);
       auth.login(responseData.userId, responseData.token);
       history.push("/login");
     } catch (error) {

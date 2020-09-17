@@ -33,6 +33,9 @@ const App = () => {
   if (token) {
     routes = (
       <Switch>
+        <Route path="/" component={Home} exact />
+
+        <Route path="/product/:productId" component={SingleProduct} exact />
         <Route path="/order" component={TrackingOrder} exact />
 
         <Route path="/checkout" component={Checkout} exact />
@@ -44,6 +47,9 @@ const App = () => {
           component={OrderConfirmation}
           exact
         />
+        <Route path="/contact" component={Contact} exact />
+
+        <Route path="/category" component={ProductCategory} exact />
 
         <Route path="/dashboard" component={Dashboard} exact />
 
@@ -74,9 +80,9 @@ const App = () => {
       value={{ login, logout, isLoggedIn: !!token, userId, token }}
     >
       <Router>
-        <main>
-          <Suspense fallback={<LoadingSpinner />}>{routes}</Suspense>
-        </main>
+        <Suspense fallback={<LoadingSpinner />}>
+          <main>{routes}</main>
+        </Suspense>
       </Router>
     </AuthContext.Provider>
   );
