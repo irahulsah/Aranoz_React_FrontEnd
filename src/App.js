@@ -1,26 +1,98 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Suspense } from "react";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from "react-router-dom";
 
-function App() {
+import "./App.css";
+
+import { AuthContext } from "./components/Shared/context/AuthContext";
+import { useAuth } from "./components/Shared/hooks/auth-hook";
+
+import LoadingSpinner from "./components/Dashboard/Component/Control/LoadingSpinner";
+
+//React.lazy imports
+
+const Home = React.lazy(() => import("./pages/home"));
+const ProductCategory = React.lazy(() => import("./pages/category"));
+const SingleProduct = React.lazy(() => import("./pages/singleProduct"));
+const LoginForm = React.lazy(() => import("./pages/LoginForm"));
+const TrackingOrder = React.lazy(() => import("./pages/trackingOrder"));
+const Checkout = React.lazy(() => import("./pages/checkout"));
+const Cart = React.lazy(() => import("./pages/cart"));
+const OrderConfirmation = React.lazy(() => import("./pages/orderConfirmation"));
+const Contact = React.lazy(() => import("./pages/contact"));
+const SignUpFormComponent = React.lazy(() => import("./pages/SignUp"));
+const Dashboard = React.lazy(() => import("./pages/dashboard"));
+
+const App = () => {
+  const { token, userId, login, logout } = useAuth();
+  let routes;
+  if (token) {
+    routes = (
+      <Switch>
+        <Route path="/" component={Home} exact />
+
+        <Route path="/product/:productId" component={SingleProduct} exact />
+
+        <Route path="/login" component={LoginForm} exact />
+
+        <Route path="/order" component={TrackingOrder} exact />
+
+        <Route path="/checkout" component={Checkout} exact />
+
+        <Route path="/cart" component={Cart} exact />
+
+        <Route
+          path="/order/confirmation/:orderId"
+          component={OrderConfirmation}
+          exact
+        />
+
+        <Route path="/contact" component={Contact} exact />
+
+        <Route path="/category" component={ProductCategory} exact />
+
+        <Route path="/signup" component={SignUpFormComponent} exact />
+
+        <Route path="/dashboard" component={Dashboard} exact />
+
+        <Redirect to="/" />
+      </Switch>
+    );
+  } else {
+    routes = (
+      <Switch>
+        <Route path="/" component={Home} exact />
+
+        <Route path="/product/:productId" component={SingleProduct} exact />
+
+        <Route path="/login" component={LoginForm} exact />
+
+        <Route path="/contact" component={Contact} exact />
+
+        <Route path="/category" component={ProductCategory} exact />
+
+        <Route path="/signup" component={SignUpFormComponent} exact />
+
+        <Redirect to="/" />
+      </Switch>
+    );
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AuthContext.Provider
+      value={{ login, logout, isLoggedIn: !!token, userId, token }}
+    >
+      <Router>
+        <main>
+          <Suspense fallback={<LoadingSpinner />}>{routes}</Suspense>
+        </main>
+      </Router>
+    </AuthContext.Provider>
   );
-}
+};
 
 export default App;

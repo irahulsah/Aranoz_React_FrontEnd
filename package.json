@@ -3,12 +3,27 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@date-io/date-fns": "^2.8.1",
+    "@material-ui/core": "^4.11.0",
+    "@material-ui/icons": "^4.9.1",
+    "@material-ui/lab": "^4.0.0-alpha.56",
+    "@material-ui/pickers": "^3.2.10",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
+    "dotenv": "^8.2.0",
+    "material-auto-rotating-carousel": "^3.0.2",
+    "node-sass": "^4.14.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-scripts": "3.4.3"
+    "react-elastic-carousel": "^0.7.5",
+    "react-multi-carousel": "^2.5.5",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "3.4.3",
+    "react-swipeable-views": "^0.13.9",
+    "react-transition-group": "^4.4.1",
+    "s": "^1.0.0",
+    "styled-components": "^5.2.0"
   },
   "scripts": {
     "start": "react-scripts start",
