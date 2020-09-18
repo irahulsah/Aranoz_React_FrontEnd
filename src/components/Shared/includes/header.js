@@ -126,9 +126,9 @@ const header = ({ isLoggedIn, logout }) => {
                 </ul>
               </div>
               <div className="hearer_icon d-flex">
-                <a id="search_1" href="l">
+                <Link id="search_1" href="/">
                   <i className="ti-search"></i>
-                </a>
+                </Link>
                 <a href="/">
                   <i className="ti-heart"></i>
                 </a>
