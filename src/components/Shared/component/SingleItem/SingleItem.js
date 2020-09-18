@@ -27,7 +27,7 @@ const SingleProductItem = ({ product }) => {
 
     // console.log(productId);
     try {
-      const resData = await sendRequest(
+      await sendRequest(
         process.env.REACT_APP_BACKEND_URL + "/add-to-cart",
         "POST",
         {

@@ -100,7 +100,7 @@ const Employees = () => {
       }
     };
     userWithProducts();
-  }, [sendRequest, userId]);
+  }, [sendRequest, userId, token]);
 
   // console.log(isLoading);
 

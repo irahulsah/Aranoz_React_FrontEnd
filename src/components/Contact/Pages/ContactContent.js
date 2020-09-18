@@ -40,10 +40,9 @@ const ContactUs = () => {
 
   const contactFormSubmitHandler = async (event) => {
     event.preventDefault();
-    let responsedata;
 
     try {
-      responsedata = await sendRequest(
+      await sendRequest(
         process.env.REACT_APP_BACKEND_URL + "/contact",
         "POST",
         { "Content-Type": "application/json" },
