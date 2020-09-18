@@ -152,7 +152,7 @@ const header = ({ isLoggedIn, logout }) => {
           </div>
         </div>
       </div>
-      <div className="search_input" id="search_input_box">
+      {/* <div className="search_input" id="search_input_box">
         <div className="container">
           <form className="d-flex justify-content-between search-inner">
             <input
@@ -169,7 +169,7 @@ const header = ({ isLoggedIn, logout }) => {
             ></span>
           </form>
         </div>
-      </div>
+      </div> */}
     </header>
   );
 };
